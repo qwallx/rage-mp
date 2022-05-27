@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+
+<html>
+
+<head> 
+	<!-- Custom Style --> 
+	<style type= "text/css">
+		html body {
+		    background-color: rgba(0, 0, 0, 0.0);
+		}
+		body .container {
+		    margin-top:15%;
+		}
+
+		.house-top {
+			background-image: url(https://i.pinimg.com/originals/54/e7/90/54e790c8305a3c94541c852670d9fb9a.jpg);
+			height: 100px;
+		} 
+	</style>
+
+	<!-- Fontawesome CDN -->
+	<link href = "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel = "stylesheet" integrity = "sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin = "anonymous">
+	
+	<!-- Bootstrap 4 CDN -->
+	<link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity = "sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin = "anonymous"> 
+</head>
+
+<body>
+
+	<!-- Buy house -->
+	<div class = "modal " id = "buyHouse" tabindex = "-1" role = "dialog">
+	    <div class = "modal-dialog modal-dialog-centered" role = "document">
+	        <div class = "modal-content text-light" style="background-color: #212429;">
+	            <div class = "modal-header">
+					<h5 class = "modal-title"><i class = "fa fa-home"></i> Buy house:</h5>
+				 
+	            </div>
+				<div class="modal-body">
+ 
+
+					<h6 class="text-muted">
+						<i> 
+ 
+							Price: <span style = "color:#009933;" id = "housePrice-placeholder">
+							  
+							<br><br>
+							<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Are you sure you want to buy this house? 
+							 
+						</i>
+					</h6>  
+				</div>
+ 
+				<div class = "modal-footer"> 
+					  
+					<button type = "button" class = "btn btn-outline-success btn-block btn-sm" data-dismiss = "modal" onclick = "houseInterracts(1);">Buy house <i class = "fa fa-check" aria-hidden="true"></i></button> 
+					<button type = "button" class = "btn btn-outline-danger btn-block btn-sm" data-dismiss = "modal">Close menu <i class = "fa fa-close" aria-hidden="true"></i></button> 
+			
+				</div>
+			</div>
+	    </div>
+	</div>
+
+    <!-- Make offer -->
+	<div class = "modal" id = "makeOffer" tabindex = "-1" role = "dialog">
+	    <div class = "modal-dialog modal-dialog-centered" role = "document">
+	        <div class = "modal-content text-light" style="background-color: #212429;">
+                <div class = "modal-header">
+					<h5 class = "modal-title"><i class = "fa fa-money"></i> Make offer:</h5>
+				 
+	            </div>
+	            <div class = "modal-body">
+
+ 
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="validationTooltipUsernamePrepend">$</span>
+                        </div>
+                        <input type="number" class="form-control" id="houseOffer" placeholder="Enter price" aria-describedby="validationTooltipUsernamePrepend" required> 
+                    
+                    </div> 
+	            </div>
+				<div class = "modal-footer"> 
+                    <button type = "button" class = "btn btn-outline-success btn-block btn-sm" data-dismiss = "modal" onclick = "houseInterracts(2);">Send offer <i class = "fa fa-check" aria-hidden = "true"></i></button>
+                    <button type = "button" class = "btn btn-outline-danger btn-block btn-sm" data-dismiss = "modal"">Close menu <i class = "fa fa-close" aria-hidden="true"></i></button>
+				</div>
+	        </div>
+	    </div>
+	</div>
+ 
+
+	<div class = "container"> 
+  
+		<div class = "row mx-auto align-item-center justify-content-center">
+		
+			<div class = "col-md-6">
+
+				<div class = "card text-light" style = "background-color: #212429;">
+					 
+					<a class = "text">
+
+						<div class="row justify-content-end">
+
+							<div class="col-md-12">
+
+								<div class="card" style="background-color: #212429;">
+
+									<div class = "card-header">
+										<h5><i class = "fa fa-home"></i> House Details:</h5>  
+									</div>
+
+									<div class="card-body">
+
+										<h6 class="text-muted">
+											<i> 
+												<i class="fa fa-bars" aria-hidden="true"></i> House ID: <span style = "color:#8080ff;" id = "houseID-placeholder">1</span>
+												 
+												<br>
+												<i class="fa fa-user" aria-hidden="true"></i> House Owner: <span style = "color:#8080ff;" id = "houseOwner-placeholder">MihaiADV</span>
+
+												<br>
+												<i class="fa fa-dollar"></i> Rent price: <span style = "color:#8080ff;" id = "rentPrice-placeholder">2.000$</span>
+												 
+												<br>
+												<i class="fa fa-money"></i> House price: <span style = "color:#8080ff;" id = "housePrice-placeholder"><span class="badge badge-danger">this house is not for sale <i class = "fa fa-close"></i></span></span>
+
+												<br>
+												<i class="fa fa-pencil-square" aria-hidden="true"></i> Description: <span style = "color:#8080ff;" id = "houseDescription-placeholder"> Veniti ba si dati rent</span> 
+									 
+												<br><br><br><br><br><br><br>  
+												<hr>
+												<center>
+													<button class = "btn btn-outline-success btn-sm" type = "button" data-toggle = "modal" data-target = "#buyHouse"><i class = "fa fa-check"></i> Buy house</button> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &#160; 
+													<button class = "btn btn-outline-warning btn-sm" type = "button" data-toggle = "modal" data-target = "#makeOffer"><i class = "fa fa-money"></i> Make an offer</button> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &#160; 
+													<button class = "btn btn-outline-info    btn-sm" type = "button" onclick = "houseInterracts(5);"><i class = "fa fa-pencil-square-o"></i> Rent house</button>   
+												</center>
+
+												<br>
+												<button class = "btn btn-outline-danger btn-block btn-sm" type = "button" onclick = "houseInterracts(0);"><i class = "fa fa-sign-out"></i> Close menu</button>  
+												 
+											</i>
+										</h6> 
+									</div> 
+								</div> 
+							</div> 
+						</div> 
+					</a> 
+				</div>  
+			</div>
+		</div> 
+	</div>  
+
+	<!-- Bootstrap 4 Scrips CDN -->
+	<script>
+
+		const inputs = document.querySelectorAll('input');
+		inputs.forEach(input => {
+				
+			input.addEventListener("focus", () => {
+				mp.trigger('ToggleChat', 1, true, false);
+			});
+			
+			input.addEventListener("focusout", (e) => {
+				mp.trigger('ToggleChat', 1, false, false);
+			}); 
+		}); 
+
+	</script>
+
+	<script src="house.js"></script> 
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+	<!-- End Bootstrap 4 Scripts CDN-->
+</body> 
+</html>

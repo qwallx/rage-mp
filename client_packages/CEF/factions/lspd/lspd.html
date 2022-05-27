@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	
+	<!-- Custom Style -->
+
+	<style type="text/css">
+		html body {
+		    background-color: rgba(0, 0, 0, 0.0); 
+			user-select: none;  
+		}
+		body .container {
+		    margin-top:20%;
+		} 
+
+		.table-scrollbar {
+			position: relative;
+			height: 350px;
+			overflow: auto;
+		}
+		.table-wrapper-scroll-y {
+			display: block;
+		}
+
+		::-webkit-scrollbar {
+		    width: 3px;
+		}
+
+		::-webkit-scrollbar-track {
+		    background: #787878;
+		}
+
+		::-webkit-scrollbar-thumb {
+		    background: #555;
+		}
+
+		::-webkit-scrollbar-thumb:hover {
+		    background: #2b2b2b;
+		} 
+
+		.scroll {
+			overflow-y: scroll;  
+			width: 465px;
+			height: 150px; 
+		}
+
+		.item.active {
+			background-color: #2d3239;
+			border-radius: 150px;
+		} 
+ 
+		.itemExtend2 {
+			padding: 0.5rem 0.5rem; 
+			background-color: #2d3239; 
+			border-radius: 5px;
+		} 
+	</style>
+
+	<!-- Fontawesome CDN -->
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	
+	<!-- Bootstrap 4 CDN -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> 
+
+</head>
+
+<body>
+
+	<!-- Modal for give ticket -->
+	<div class="modal" id="give_ticket" tabindex="-1" role="dialog">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+	        <div class = "modal-content text-light" style = "background-color: #212429;">
+	            <div class="modal-header">
+	                <h5 class="modal-title">Send ticket:</h5> 
+					<button class="btn btn-dark" class="close" data-dismiss="modal" style="background-color: #212429;"><i class="fa fa-times-circle"></i></button>
+
+			    </div>
+		  
+				<div class = "modal-body">
+					   
+					<label><h6>Enter name:</h6></label>
+					<div class = "input-group">
+			 
+						<input type = "text" class = "form-control" id = "ticketMember" placeholder = "Enter name" required>
+  
+					    <div class = "invalid-tooltip">Please input a value.</div>
+					</div> 
+					<br>
+						 
+                    <!-- ticket price -->
+					<label><h6>Select reason:</h6></label>
+					<select multiple class = "form-control" id = "reasonSelected">
+						<option>Driving a vehicle without a registration number.</option>
+						<option>Possession of anti-radar devices.</option>
+						<option>Drunk driving.</option>
+					</select> 
+				</div>
+				<div class="modal-footer"> 
+					
+					<button class = "btn btn-primary btn-sm" data-dismiss = "modal" onclick = "callButtonManager(1);">Send</button>
+				
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal" id="enter_house" tabindex="-1" role="dialog">
+		
+		<div class="modal-dialog modal-dialog-centered" role="document">
+		   
+			<div class = "modal-content text-light" style = "background-color: #212429;">
+			   
+				<div class = "modal-body">
+
+					<h6>  
+						<center>
+
+							<br><br> 
+							<div style = "background-color: #444a55; padding: 5px 5px; width: 350px; border-radius: 16px;">Please select action...</div>
+ 
+							<br><br><br> 
+ 
+							<button class = "btn btn-info btn-sm" style = "width: 120px;" onclick="clickMenuHouse(1);">Unrent room <i class="fa fa-key" aria-hidden="true"></i></button>
+							<button class = "btn btn-success btn-sm" style = "width: 120px;" onclick="clickMenuHouse(2);">Extend rent <i class="fa fa-external-link" aria-hidden="true"></i></button> 
+							<button class = "btn btn-warning btn-sm" style = "width: 120px;" onclick="clickMenuHouse(3);">Exit house <i class="fa fa-circle-o-notch" aria-hidden="true"></i></button> 
+							 
+							<br><br> 
+						    <button class = "btn btn-danger btn-sm btn-block" style = "width: 370px;" onclick="clickMenuHouse(0);">Close <i class="fa fa-times" aria-hidden="true"></i></button> 
+						</center>
+					</h6>
+				</div> 
+			</div>
+		</div>
+	</div>
+
+	<div class="modal" id="extend_rent" tabindex="-1" role="dialog">
+		
+		<div class="modal-dialog modal-dialog-centered" role="document">
+		   
+			<div class = "modal-content text-light" style = "background-color: #212429;">
+			   
+				<div class = "modal-body">
+ 
+					 
+
+					<center>
+						<h5 style = "text-align: left;">
+							Extend rent <i class="fa fa-home" aria-hidden="true"></i>
+						</h5>
+					</center>
+					<hr>
+
+					<br> 
+
+					<h6 class = "itemExtend" style="padding: 0.5rem 0.5rem; ">
+					 
+							
+						Period of time: 7 days
+						<br> 
+						Price: <span style="color: #009933;">1.500$</span>  
+					</h6> 
+
+
+					<h6 class = "itemExtend2" style="padding: 0.5rem 0.5rem; "> 
+					 
+							
+						Period of time: 7 days
+						<br> 
+						Price: <span style="color: #009933;">1.500$</span>  
+					</h6>   
+
+
+					
+					<h6 class = "itemExtend" style="padding: 0.5rem 0.5rem; "> 
+							
+							
+						Period of time: 7 days
+						<br> 
+						Price: <span style="color: #009933;">1.500$</span>  
+					</h6> 
+ 
+					<br><br> 
+
+					<center>
+
+						<button class = "btn btn-success btn-sm " style = "width: 150px;" onclick="clickMenuHouse(0);">Extend <i class="fa fa-check" aria-hidden="true"></i></button> 
+						<button class = "btn btn-danger btn-sm " style = "width: 150px;" onclick="clickMenuHouse(0);">Close <i class="fa fa-times" aria-hidden="true"></i></button> 
+				
+					</center> 
+				</div> 
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Modal for give wanted -->
+	<div class="modal" id = "give_wanted" tabindex = "0" role = "dialog">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class = "modal-content text-light" style = "background-color: #212429;">
+				<div class="modal-header">
+					<h5 class="modal-title"><i class="fa fa-star" aria-hidden="true"></i> Give wanted </h5>
+					<button class="btn btn-dark" class="close" data-dismiss="modal" style="background-color: #212429;"><i class="fa fa-times-circle"></i></button>
+				</div>
+		
+				<div class = "modal-body">
+					 
+					<label> 
+						<h6>
+							<i class="fa fa-user" aria-hidden="true"></i> Player name
+						</h6> 
+					</label>
+					<div class = "input-group">
+			
+						<input type = "text" class = "form-control" id = "wantedMember" placeholder = "Enter name" required>
+
+						<div class = "invalid-tooltip">Please input a value.</div>
+					</div> 
+					<br>
+						
+					<!-- ticket price -->
+					<h6><i class="fa fa-align-justify" aria-hidden="true"></i> Select reason</h6>
+					<div class="scroll items-list"> 
+
+						<h6 class = "item" style="padding: 0.5rem 0.5rem;">
+							<img src = "right-arrow.png" style="width: 15px;"> Vehicle theft (<span style="color: #ff6666;">wanted 3</span>)
+						</h6> 
+ 
+						<h6 class = "item" style="padding: 0.5rem 0.5rem;">
+							<img src = "right-arrow.png" style="width: 15px;"> Illegal possession of drugs (<span style="color: #ff6666;">wanted 6</span>)
+						</h6>  
+					</div>  
+				</div>
+				<div class="modal-footer"> 
+					
+					<button class = "btn btn-primary btn-sm btn-block" data-dismiss = "modal" onclick = "callButtonManager(2);">Give wanted <i class="fa fa-check" aria-hidden="true"></i></button>
+				
+				</div>
+			</div>
+		</div>
+	</div>
+
+ 
+	<!-- Aici e modalul (ala de apare sus) -->
+	<div class = "modal" id = "ticket_informations2" tabindex = "-1" role = "dialog">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+	        <div class = "modal-content text-light" style = "background-color: #212429;">
+	            <div class="modal-header">
+	                <h5 class="modal-title">Ticket informations:</h5>
+				    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times-circle"></i></button>
+			    </div>
+		  
+				<div class = "modal-body">
+
+					<a class = "text" id = "ticketInfo-placeholder"></a>   
+ 
+				</div> 
+			</div>
+		</div>
+	</div>
+
+	<!-- Set license -->
+	<div class = "modal" id = "set_license" tabindex = "-1" role = "dialog">
+		<div class="modal-dialog" role="document">
+			<div class = "modal-content text-light" style = "background-color: #212429;">
+				<div class="modal-header">
+					<h5 class="modal-title">Set license:</h5>
+					 
+				</div>
+		
+				<div class = "modal-body">
+
+					<label for = "setLicense">Enter hours</label> 
+					<input type="number" id = "setLicense" placeholder = "Enter hours..." class = "form-control"> 
+				</div> 
+ 
+				<div class="modal-footer" id = "modal_set_license"></div> 
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Aici e modalul (ala de apare sus) -->
+	<div class="modal fade bd-example-modal-lg" id = "member_informations" tabindex = "0" role = "dialog">
+		<div class="modal-dialog modal-lg" role="document"> 
+			<div class = "modal-content text-light" style = "background-color: #212429;">
+				<div class="modal-header">
+					<h5 class="modal-title">MihaiADV details:</h5> 
+
+					<div class = "float-right">
+
+						<button class="btn btn-dark" style = "background-color: #212429;" onclick = "clickReport(0);"><i class = "fa fa-times-circle"></i></button>  
+
+					</div>
+
+				</div>
+		
+				<div class = "modal-body">
+ 
+					<div class="col-lg-12">
+								
+						<div class="table"> 
+
+							<h6>
+
+								<table class="table table-bordered table-dark table-sm">
+								
+									<thead style="background-color: #212429; text-align:center;">
+										 
+										<tr>
+											<th>Options <i class="fa fa-cog" aria-hidden="true"></i></th>
+											<th>Results <i class="fa fa-server" aria-hidden="true"></i></th> 
+										</tr> 
+									 
+									</thead>
+	
+									<tbody id = "memberInformations-placeholder" style="text-align:center;"></tbody> 
+								</table>  
+							</h6> 
+						</div>   
+
+						<div class="collapse" id="collapseExample"> 
+					
+							<h6> 
+							 
+								<div class="form-row align-items-center">
+
+									<div class = "form-group col-md-6" >
+										<label for = "inputCity">Set FW </label> 
+										<div class="input-group">
+											<input type="number" class="from-control" id="inputFW" placeholder = "Current 0">
+												
+											<div class="col-auto">
+												<span style="margin-left: -12%;" class="badge badge-success item2"><i class="fa fa-check" aria-hidden="true"></i></span>   
+											</div>
+										</div> 
+									</div> 
+
+									<div class = "form-group col-md-6">
+										<label for = "inputCity">Set FP </label> 
+										<div class="input-group">
+											<input type="number" class="from-control" id="inputFP" placeholder = "Current 0">
+											
+											<div class="col-auto">
+												<span style="margin-left: -12%;" class="badge badge-success item2"><i class="fa fa-check" aria-hidden="true"></i></span>   
+											</div>
+										</div> 
+									</div>   
+
+									<div class = "form-group col-md-6">
+										<label for = "inputCity">Set Rank </label> 
+										<div class="input-group">
+											<input type="number" class="from-control" id="inputRank" placeholder = "Current 7">
+											
+											<div class="col-auto">
+												<span style="margin-left: -12%;" class="badge badge-success item2"><i class="fa fa-check" aria-hidden="true"></i></span>   
+											</div>
+										</div> 
+									</div>    
+								</div>  
+								 
+							</h6> 
+						</div>  
+					</div>  
+
+					<br>
+					<a class="btn btn-info btn-block btn-sm" data-toggle="collapse" onclick="playerClick();" href = "#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></a>
+				</div>  
+			</div>
+		</div>
+	</div>
+
+	<!-- Uninvite modal -->
+	<div class = "modal" id = "member_uninvite" tabindex = "-1" role = "dialog">
+		<div class="modal-dialog" role="document">
+			<div class = "modal-content text-light" style = "background-color: #212429;">
+				<div class="modal-header">
+					<h5 class="modal-title">Uninvite member</h5>
+					<button class="btn btn-dark" style = "background-color: #212429;" class="close" data-dismiss="modal" aria-label="Close"><i class = "fa fa-times-circle"></i></button>
+				</div>
+		
+				<div class = "modal-body">
+ 
+					<form>
+					 
+						<label>Enter FP</label>
+						<input type="number" id = "uninviteFP" class="form-control" placeholder="Enter FP">
+
+						<br>
+
+						<label>Enter Reason</label> 
+						<textarea class = "form-control" id = "uninviteReason" rows = "2" placeholder="Enter Reason"></textarea> 
+					</form>
+
+                    <br>
+					<h6>Are you sure you want to uninvite this member from your faction?</h6>
+ 
+				</div> 
+ 
+				<div class="modal-footer" id = "uninviteButtons"></div>
+			</div>
+		</div>
+	</div>
+ 
+	<div class = "container text-white" style="opacity: 0.8;">
+		<div class = "row mx-auto align-item-center justify-content-center">
+			<div class = "col-md-12">
+
+				<div class = "card text-light" style = "background-color: #000000;">
+ 
+					<div class = "card-header">
+						<i class = "fa fa-bars"></i> Faction menu 
+						
+						
+						<div class = "float-right">
+
+							<button class="btn text-light" style="background-color: #000000;" onclick = "callButtonManager(0);">
+								 
+								<i class="fa fa-times-circle"></i>
+							 
+							</button>  
+						</div>
+					</div>
+  
+					<div class="card-body">
+  
+						<a id = "tabsFaction-placeholder"></a> 
+				
+						<br> 
+						<div class="tab-content" id="tabContent">
+    
+							<!-- Search person -->
+							<div class="tab-pane fade" id="searchInfo" role="tabpanel" aria-labelledby="searchInfo-tab"> 
+
+
+								<div class="row justify-content-center">
+									<div class="col-lg-6">
+										<div class="input-group">
+											<input type="text" id = "memberSearch" placeholder="Search a player..." class="form-control text-white bg-dark">
+											<button class="btn btn-primary ml-1" onclick = "callButtonManager(4);"><i class="fa fa-search"></i></button>
+										</div>
+									</div>
+								</div>
+								 
+								<br>   
+								<div class="row">
+ 
+									<div class="col-lg-6">
+
+										<div class="table"> 
+
+											<table class="table table-bordered table-dark">
+												
+												<thead style="background-color: #212429; text-align:center;">
+													 
+													<tr>
+														<th>Options <i class="fa fa-cog" aria-hidden="true"></i></th>
+														<th>Results <i class="fa fa-server" aria-hidden="true"></i></th> 
+													</tr> 
+												 
+												</thead>
+	
+												<tbody id = "infoSearch-placeholder" style="text-align:center;"></tbody> 
+											</table> 
+										</div>   
+									</div>    
+ 
+									<div class="col-lg-6">
+								
+										<div class="table"> 
+
+											<table class="table table-bordered table-dark">
+												
+												<thead style="background-color: #212429; text-align:center;">
+													<tr>
+														<th>License <i class="fa fa-id-card" aria-hidden="true"></i></th>
+														<th>Status <i class="fa fa-exclamation-circle" aria-hidden="true"></i></th>
+														<th>Hours <i class="fa fa-calendar" aria-hidden="true"></i></th>
+														<th>Action <i class="fa fa-cog" aria-hidden="true"></i></th> 
+													</tr>
+												</thead>
+	 
+												<tbody id = "searchString-placeholder" style="text-align:center;"></tbody> 
+											</table> 
+										</div>  
+									</div>   
+								</div>  
+							</div> 
+ 
+							<!-- View faction members-->
+							<div class="tab-pane fade show active" id="memberInfo" role="tabpanel" aria-labelledby="memberInfo-tab"> 
+
+								<a class = "text" id = "factionName-placeholder"></a> 
+								<br> 
+
+								<div class="table-wrapper-scroll-y table-scrollbar">
+									<table class="table table-hover table-dark">
+										<thead style="background-color: #212429; text-align:center;">
+											<tr>  
+												<th><i class="fa fa-bars" aria-hidden="true"></i></th>  
+												<th>Member <i class="fa fa-user-circle-o" aria-hidden="true"></i></th>    
+												<th>Rank <i class="fa fa-trophy" aria-hidden="true"></i></th>  
+												<th>Warns / FW <i class="fa fa-arrow-down" aria-hidden="true"></i></th>  
+												<th>Options <i class="fa fa-cogs" aria-hidden="true"></i></th>   
+											</tr>
+										</thead>
+ 
+										<tbody id = "membersString-placeholder" style="text-align:center;"></tbody>  
+									</table> 
+								</div>    
+							</div> 
+
+                            <!-- View Wanteds -->
+						    <div class="tab-pane fade" id="ten" role="tabpanel" aria-labelledby="ten-tab"> 
+
+								<h5>Los Santos Police wanteds:</h5>  
+								<br>
+							 
+								<div class="table-wrapper-scroll-y table-scrollbar">
+									<table class="table table-hover table-dark">
+										<thead style="background-color: #212429; text-align:center;">
+											<tr>
+												
+												<th>Time <i class="fa fa-clock-o" aria-hidden="true"></i></th>
+												<th>Caller <i class="fa fa-phone-square" aria-hidden="true"></i></th>  
+												<th>Suspect <i class="fa fa-user-circle-o" aria-hidden="true"></i></th>  
+												<th>Description <i class="fa fa-list" aria-hidden="true"></i></th>  
+												<th>Options <i class="fa fa-cogs" aria-hidden="true"></i></th>  
+												
+											</tr>
+										</thead>
+  
+										<tbody id = "wantedString-placeholder" style="text-align:center;"></tbody> 
+									</table>
+								</div> 
+ 
+								<div class="card-footer">
+ 
+									<button class="btn btn-danger btn-block" type="button" data-toggle="modal" data-target="#give_wanted"><i class="fa fa-plus-square"></i> New wanted</button> 
+
+								</div>   
+							</div>  
+
+			                <!-- View tickets and send -->
+							<div class="tab-pane fade" id="hinfo" role="tabpanel" aria-labelledby="hinfo-tab"> 
+
+								<h5>Los Santos Police tickets:</h5> 
+								<br> 
+
+								<div class="table-wrapper-scroll-y table-scrollbar">
+									<table class="table table-hover table-dark">
+										<thead style="background-color: #212429; text-align:center;">
+											<tr> 
+												<th>Officer <i class="fa fa-users" aria-hidden="true"></i></th>  
+												<th>Player <i class="fa fa-user-circle-o" aria-hidden="true"></i></th>    
+												<th>Value <i class="fa fa-money" aria-hidden="true"></i></th>  
+												<th>Reason <i class="fa fa-list" aria-hidden="true"></i></th>  
+												<th>Status <i class="fa fa-gavel" aria-hidden="true"></i></th> 
+												<th>Options <i class="fa fa-cogs" aria-hidden="true"></i></th>  
+											</tr>
+										</thead>
+ 
+										<tbody id = "ticketsString-placeholder" style="text-align:center;"></tbody> 
+									</table> 
+								</div>   
+
+								<div class="card-footer">
+ 
+									<button class="btn btn-success btn-block" type="button" data-toggle="modal" data-target="#give_ticket"><i class="fa fa-plus-square"></i> New ticket</button> 
+
+								</div>  
+							</div>  
+						</div> 
+					</div> 
+				</div> 
+			</div>
+		</div>
+	</div>
+ 
+	<script>  
+
+		//WANTED CLICK
+		const itemsWanted = document.querySelectorAll('.item'); 
+		var wantedType = null;
+		var wantedAmount = 0;
+
+		//CLICK MEMBERS BUTTON
+		const items = document.querySelectorAll('.item2'); 
+		var memberClickedID = null;
+		 
+  
+		window.addEventListener('DOMContentLoaded', () => {		
+
+			//MEMBERS
+			items[0].value = 0;   
+			items[1].value = 1;   
+			items[2].value = 2;   
+
+			//WANTED
+			//Seteaza prima optiune activa
+			itemsWanted[0].classList.add('active'); 
+
+			itemsWanted[0].value = 'Vehicle theft';
+			itemsWanted[1].value = 'Illegal possession of drugs'; 
+
+			itemsWanted[0].wanted = 3;
+			itemsWanted[1].wanted = 6; 
+
+			//$('#enter_house').modal()  
+		});
+
+
+		function clickMenuHouse(option)
+		{
+			switch(option)
+			{
+				case 0:
+				{
+					$('#enter_house').modal('hide') 
+					break;
+				}
+
+				case 2:
+				{
+					$('#extend_rent').modal() 
+					break;
+				}
+			}
+		}
+
+
+
+		itemsWanted.forEach(item => {
+			item.addEventListener('click', (e) => {
+				document.querySelector('.item.active').classList.remove('active');
+				item.classList.add('active'); 
+ 
+				wantedType = item.value;
+				wantedAmount = item.wanted;
+			});
+		});  
+
+		items.forEach(item => {
+			item.addEventListener('click', (e) => {
+  
+				switch(item.value)
+				{
+					case 0: 
+					{
+						const fwInput = document.getElementById("inputFW"); 
+						mp.trigger("updaMemberStatistics", memberClickedID, item.value, fwInput.value);   
+						break;
+					}
+
+					case 1:
+					{
+						const fpInput = document.getElementById("inputFP");
+						mp.trigger("updaMemberStatistics", memberClickedID, item.value, fpInput.value); 
+						break;
+					}
+
+					case 2:
+					{
+						const rankInput = document.getElementById("inputRank");
+						mp.trigger("updaMemberStatistics", memberClickedID, item.value, rankInput.value); 
+						break;
+					}
+				} 
+			});
+		}); 
+ 
+        function callButtonManager(button, playerID, licenseID)
+		{      
+			//Amenzi
+			let ticketMember = document.getElementById("ticketMember");  
+			let ticketReason = document.getElementById("reasonSelected"); 
+		
+			//Wanted
+			let wantedMember = document.getElementById("wantedMember"); 
+			
+			//Search
+			let playerSearch = document.getElementById("memberSearch");
+			let licenseHours = document.getElementById("setLicense");;
+
+			//Members function
+			let memberUninviteFP = document.getElementById("uninviteFP");
+			let memberUninviteReason = document.getElementById("uninviteReason");
+
+			$('#member_uninvite').modal('hide') 
+
+			//                                                          -------------Tickets//-------------   ----------------Wanted----------------                                                    ----------------------Member----------------------
+			mp.trigger("callButtonManagerExecute", button, playerID, ticketMember.value, ticketReason.value, wantedMember.value, wantedType, wantedAmount, playerSearch.value, licenseID, licenseHours.value, memberUninviteFP.value, memberUninviteReason.value);   
+		} 
+
+		function clickedLicense(button, playerID, licenseID)
+		{
+
+			if(button == 6)
+			{
+				const modal_set_license = document.querySelector('#modal_set_license'); 
+                modal_set_license.innerHTML = 
+				`
+					<button class = "btn btn-success btn-sm" data-dismiss = "modal" onclick = "callButtonManager(6, ${playerID}, 0);">Set <i class="fa fa-check"></i></button>
+					<button class = "btn btn-danger btn-sm" type="button" class="close" data-dismiss="modal" aria-label="Close">Close <i class="fa fa-times-circle"></i></button>
+				`;
+
+			    $('#set_license').modal() 
+			} 
+			else callButtonManager(button, playerID, licenseID)
+		}
+ 
+		function searchPlayer(playerID, playerName, playerDriving, playerWanted, playerCrimes, playerArrests, textLicense)
+		{   
+			const licenseString = document.querySelector('#searchString-placeholder'); 
+ 
+			licenseString.innerHTML = `
+				<tr>
+					<td>Driving</td>
+					<td>${(playerDriving == 0 ? ('<span class="badge badge-pill badge-danger">Taken <i class="fa fa-times" aria-hidden="true"></i></span>') : ('<span class="badge badge-pill badge-success">Passed <i class="fa fa-check" aria-hidden="true"></i></span>'))}</td>
+					<td>
+						<span class="badge badge-pill badge-info">${playerDriving} hours <i class="fa fa-clock-o" aria-hidden="true"></i></span>
+					</td>
+					<td>
+ 
+						${(playerDriving == 0 ? (`<button class="btn btn-outline-success btn-sm" type="button" onclick = "clickedLicense(6, ${playerID}, 0);">Set <i class="fa fa-plus" aria-hidden="true"></i></button>`) : (`<button class="btn btn-outline-danger btn-sm" type="button" onclick = "clickedLicense(5, ${playerID}, 0);">Take <i class="fa fa-times" aria-hidden="true"></i></button>`))}
+			 
+					</td>
+				</tr>   
+
+				 
+				<tr>
+					<td>Weapon</td>
+					<td>${(playerDriving == 0 ? ('<span class="badge badge-pill badge-danger">Taken <i class="fa fa-times" aria-hidden="true"></i></span>') : ('<span class="badge badge-pill badge-success">Passed <i class="fa fa-check" aria-hidden="true"></i></span>'))}</td>
+					<td>
+						<span class="badge badge-pill badge-info">${playerDriving} hours <i class="fa fa-clock-o" aria-hidden="true"></i></span>
+					</td>
+					<td>
+ 
+						${(playerDriving == 0 ? (`<button class="btn btn-outline-success btn-sm" type="button" onclick = "clickedLicense(6, ${playerID}, 1);">Set <i class="fa fa-plus" aria-hidden="true"></i></button>`) : (`<button class="btn btn-outline-danger btn-sm" type="button" onclick = "clickedLicense(5, ${playerID}, 1);">Take <i class="fa fa-times" aria-hidden="true"></i></button>`))}
+			 
+					</td>
+				</tr>   
+			`;
+
+			const infoString = document.querySelector('#infoSearch-placeholder'); 
+
+
+			infoString.innerHTML = `
+ 
+				<tr>
+					<td>Name <i class="fa fa-user" aria-hidden="true"></i></td> 
+					<td>${playerName}</td> 
+				</tr>   
+ 
+				<tr> 
+					<td>Wanted <i class="fa fa-star" aria-hidden="true"></i></td> 
+					<td>${playerWanted == 0 ? ('no') : (`Yes (wanted: ${playerWanted})`)}</td>  
+				</tr>  
+
+				<tr> 
+					<td>Crimes <i class="fa fa-heartbeat" aria-hidden="true"></i></td> 
+					<td>${playerCrimes}</td> 
+				</tr>  
+
+				<tr> 
+					<td>Arrests <i class="fa fa-lock" aria-hidden="true"></i></td>
+					<td>${playerArrests}</td> 
+				</tr>    
+			`;
+
+		} 
+   
+		function showTabsFaction(factionID, wantedsString, ticketsString, membersString, factionName)
+		{
+
+			const factionTabs = document.querySelector('#tabsFaction-placeholder'); 
+			const factionMembers = document.querySelector('#membersString-placeholder'); 
+			const factionWanteds = document.querySelector('#wantedString-placeholder'); 
+			const factionTickets = document.querySelector('#ticketsString-placeholder'); 
+			const factionNamess = document.querySelector('#factionName-placeholder'); 
+
+			/* 
+			    ID [0] - Los Santos Police 
+			*/
+ 
+			//Show available tabs
+			factionTabs.innerHTML = 
+			`  
+				<ul class="nav nav-pills nav justify-content-center" id="tab" role="tablist">
+	
+					<li class = "nav-item" role = "presentation">
+						<a class="nav-link active" id="memberInfo-tab" data-toggle="tab" href="#memberInfo" role="tab" aria-controls="memberInfo" aria-selected="true">Faction members <i class="fa fa-users" aria-hidden="true"></i></a>
+					</li> 
+ 
+					${factionID == 0 ? (`<li class="nav-item" role="presentation"><a class="nav-link" id="searchInfo-tab" data-toggle="tab" href="#searchInfo" role="tab" aria-controls="searchInfo" aria-selected="true">Search person <i class="fa fa-search" aria-hidden="true"></i></a></li>`) : ("")}
+
+					${factionID == 0 ? (`<li class="nav-item" role="presentation"><a class="nav-link" id="ten-tab" data-toggle="tab" href="#ten" role="tab" aria-controls="ten" aria-selected="true">Wanted <i class="fa fa-star" aria-hidden="true"></i></a></li>`) : ("")}
+
+					${factionID == 0 ? (`<li class="nav-item" role="presentation"><a class="nav-link" id="hinfo-tab" data-toggle="tab" href="#hinfo" role="tab" aria-controls="hinfo" aria-selected="true">Tickets <i class="fa fa-ticket" aria-hidden="true"></i></a></li>  `) : ("")}
+   
+				</ul>   
+			`; 
+
+			//Show members tab string
+			factionMembers.innerHTML = membersString;
+			
+			//Show players with wanteds
+			factionWanteds.innerHTML = (wantedsString == '' ? '<td><h5>No wanted in this moment...</h5></td>' : wantedsString); 
+
+			//Show players with tickets
+			factionTickets.innerHTML = (ticketsString == '' ? '<td><h5>No tickets in this moment...</h5></td>' : ticketsString); 
+
+			//Show faction name
+			factionNamess.innerHTML = `<h5>${factionName} members:</h5>`; 
+		}
+
+		function clickMember(modalID, memberID, memberName, memberRank, memberFW, memberFP)
+		{
+			if(modalID == 0)
+			{
+				//View member informations
+				const memberInformations = document.querySelector('#memberInformations-placeholder'); 
+
+				memberClickedID = memberName;
+			
+				memberInformations.innerHTML = `
+				
+					<tr>
+						<td>Name <i class="fa fa-user" aria-hidden="true"></i></td> 
+						<td>${memberName}</td> 
+					</tr>   
+		
+					<tr> 
+						<td>Rank <i class="fa fa-star" aria-hidden="true"></i></td> 
+						<td>${memberRank} (<span style = "color:#8080ff;">Elder</span>)</td>  
+					</tr>  
+
+					<tr> 
+						<td>Faction warns <i class="fa fa-heartbeat" aria-hidden="true"></i></td> 
+						<td>${memberFW}</td> 
+					</tr>  
+
+					<tr> 
+						<td>Faction Punish <i class="fa fa-lock" aria-hidden="true"></i></td>
+						<td>${memberFP}</td> 
+					</tr>  
+					
+					<tr> 
+						<td>Days <i class="fa fa-lock" aria-hidden="true"></i></td>
+						<td>100</td> 
+					</tr> 
+				`;
+				 
+				$('#member_informations').modal() 
+			}
+
+			if(modalID == 1)
+			{
+				const buttonUninvite = document.querySelector('#uninviteButtons'); 
+
+				buttonUninvite.innerHTML = `<button class = "btn btn-outline-danger btn-block btn-sm" type = "button" onclick = "callButtonManager(10, ${memberID});">Uninvite <i class="fa fa-user-times" aria-hidden="true"></i></button>`; 
+			    $('#member_uninvite').modal() 
+			} 
+		}
+
+		const availableInputs = ['input', 'textarea']; 
+		availableInputs.forEach(inputName => {
+		    const inputs = document.querySelectorAll(inputName);
+		    inputs.forEach(input => {
+				
+				input.addEventListener("focus", () => {
+					mp.trigger('ToggleChat', 1, true, false);
+				});
+				
+				input.addEventListener("focusout", (e) => {
+					mp.trigger('ToggleChat', 1, false, false);
+				});
+		    });
+		}); 
+	</script>
+ 
+ 
+    <!-- Bootstrap 4 Scrips CDN --> 
+	<script src = "lspd.js"></script> 
+	<script src = "https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src = "https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src = "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script> 
+	<!-- End Bootstrap 4 Scripts CDN-->
+</body>
+
+</html>

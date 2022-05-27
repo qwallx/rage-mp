@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	 
+	<!-- Fontawesome CDN -->
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	
+	<!-- Bootstrap 4 CDN -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> 
+
+	<link rel="stylesheet" href="css/style.css"> 
+  
+</head> 
+
+	<body> 
+	 
+		<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="trade_request">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content text-light" style = "background-color: #000000; opacity: 0.8;">
+				 
+					<h6 class="modal-body">
+
+						<center>Trade request</center>
+
+						<hr style="background-color: white; border-radius: 5px;">
+ 
+						<center>   
+
+							<a id="trade_offer_text"></a>
+ 
+							<br>
+
+							<button onclick="click_invite_buttons(1);" style="border-radius: 200px; width: 130px; margin-right: 10px;" type="button" class="btn btn-success btn-sm">Accept <i class="fa fa-check"></i></button>
+							<button onclick="click_invite_buttons(0);" style="border-radius: 200px; width: 130px; margin-left: 10px;" type="button" class="btn btn-danger btn-sm">Close <i class="fa fa-times"></i></button>
+							 
+						</center>  
+					</h6>  
+				</div>
+			</div>
+		</div>
+ 
+		<script>
+ 
+			//Function for send message in trade chat
+            function invite_player(text)
+			{    
+				$('#trade_request').modal()
+				
+				document.getElementById('trade_offer_text').innerHTML = text;
+			}  
+
+			function click_invite_buttons(option)
+			{
+				//Close modal
+				$('#trade_request').modal('hide');  
+
+				mp.trigger("click_invite_buttons", option); 
+			}
+		</script>
+ 
+	
+		<!-- Bootstrap 4 Scrips CDN -->     
+		<script src = "index.js"></script>
+		<script src = "https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> 
+		<script src = "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script> 
+		<!-- End Bootstrap 4 Scripts CDN-->
+
+	</body> 
+</html> 

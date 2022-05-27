@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	
+	<!-- Custom Style -->
+
+	<style type="text/css">
+		html body {
+		    background-color: rgba(0, 0, 0, 0.0);
+		}
+		body .container {
+		    margin-top:18%;
+		}
+ 
+		.table-scrollbar {
+			position: relative;
+			height: 350px;
+			overflow: auto;
+		}
+
+		.table-wrapper-scroll-y {
+			display: block;
+		}
+
+		::-webkit-scrollbar {
+		    width: 8px;
+		}
+
+		::-webkit-scrollbar-track {
+		    background: #787878;
+		}
+
+		::-webkit-scrollbar-thumb {
+		    background: #555;
+		}
+
+		::-webkit-scrollbar-thumb:hover {
+		    background: #2b2b2b;
+		}  
+ 
+		#welcome-message {
+			width: 100%;
+			padding: 1rem 1.5rem;
+			margin: 1rem 0;
+			background-color: #171a1c;
+			border-radius: 20px;
+
+			text-align: center;
+		}
+		#welcome-message > h5 {
+			font-size: 1.5rem;
+		}
+		#welcome-message > p {
+			font-size: 1.25rem;
+		} 
+	</style>
+
+	<!-- Fontawesome CDN -->
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	
+	<!-- Bootstrap 4 CDN -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> 
+
+	<script src="lspd.js"></script> 
+
+</head>
+
+<body>  
+	<div class = "container ">
+		<div class = "row mx-auto align-item-center justify-content-center">
+			<div class = "col-md-12">
+
+				<div class = "card text-light" style = "background-color: #212429;"> 
+ 
+					<div class = "card-header">
+						<i class = "fa fa-ticket"></i> My tickets 
+						<div class = "float-right">
+
+							<button class="btn btn-dark" style="background-color: #212429;" onclick = "playerTicketF(0);"><i class="fa fa-times-circle"></i></button>  
+
+						</div>
+					</div> 
+					<div class="card-body"> 
+						<div id = "welcome-message">
+ 
+							<a class = "text" id = "infoTicketsString-placeholder"></a> 
+						</div>
+ 
+						<!-- View tickets and send --> 
+						<div class="table-wrapper-scroll-y table-scrollbar">
+							<table class="table table-hover table-dark">
+								<thead style="background-color: #212429; text-align:center;">
+									<tr> 
+										<th>Officer <i class="fa fa-users" aria-hidden="true"></i></th>   
+										<th>Value <i class="fa fa-money" aria-hidden="true"></i></th>  
+										<th>Reason <i class="fa fa-list" aria-hidden="true"></i></th>  
+										<th>Date <i class="fa fa-calendar" aria-hidden="true"></i></th>
+										<th>Status <i class="fa fa-gavel" aria-hidden="true"></i></th> 
+										<th>Options <i class="fa fa-cogs" aria-hidden="true"></i></th>  
+									</tr>
+								</thead>
+
+								<tbody id = "playerTickets-placeholder" style="text-align:center;"></tbody> 
+							</table> 
+						</div>      
+					</div> 
+				</div> 
+			</div>
+		</div>
+	</div> 
+ 
+    <!-- Bootstrap 4 Scrips CDN -->  
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<!-- End Bootstrap 4 Scripts CDN-->
+</body> 
+</html>

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	
+	<!-- Custom Style --> 
+	<style type="text/css">
+		html body {
+		    background-color: rgba(0, 0, 0, 0.0);
+			user-select: none; 
+		}
+		body .container {
+		    margin-top: 15%; 	 
+			margin-left: 40%; 
+			opacity: 0.8;
+		} 
+ 
+		 
+	</style>
+
+	<!-- Fontawesome CDN -->
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	
+	<!-- Bootstrap 4 CDN -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> 
+ 
+
+</head>
+
+<body>
+  
+	<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="confirm_order">
+		<div class="modal-dialog modal-sm modal-dialog-centered">
+		    <div class="modal-content text-light" style = "background-color: #000000; opacity: 0.8;">
+			    <div class="modal-header">
+					<h6 class="modal-title">Confirm order <i class="fa fa-check"></i></h6>
+			    </div>
+			   
+				<h6 class="modal-body">
+
+					<center>   
+						<button type="button" class="btn btn-success btn-sm" style="border-radius: 5px; width: 120px;" onclick = "click_button(2);"><i class="fa fa-money fa-fw"></i> Cash</button>
+						<button type="button" class="btn btn-info btn-sm" style="border-radius: 5px; width: 120px;" onclick = "click_button(3);"><i class="fa fa-credit-card fa-fw"></i> Card</button>
+					</center>  
+				</h6>  
+			</div>
+		</div>
+	</div>
+  
+	<div class = "container ">
+		<div class = "row mx-auto align-item-right justify-content">
+			<div class="col-md-5 ml-auto">
+
+				<div class = "card text-light" style = "background-color: #000000;">
+  
+					 <div class = "card-header">
+						<h5>
+							<img src = "images/clothes.png" style="width: 15px;"> Clothing store
+						 
+							<button class="btn btn-dark btn-sm float-right" onclick = "click_button(0);"><i class="fa fa-times"></i></button>
+						</h5>   
+					</div>
+
+
+					<div class="card-body">
+ 
+
+						<nav class="nav nav-pills nav justify-content-center">
+
+							<a class="nav-link flex-sm-fill text-sm-center nav-link active" id="jacket-tab" onclick="clicked_category(11);" data-toggle="pill" href="#jacket" role="tab" aria-controls="jacket" aria-selected="true"><img src = "images/jacket.png" style="width: 30px;"></a>
+							<a class="nav-link flex-sm-fill text-sm-center nav-link" id="jeans-tab" onclick="clicked_category(4);" data-toggle="pill" href="#jeans" role="tab" aria-controls="jeans" aria-selected="false"><img src = "images/jeans.png" style="width: 30px;"></a>
+							<a class="nav-link flex-sm-fill text-sm-center nav-link" id="shoes-tab" onclick="clicked_category(6);" data-toggle="pill" href="#shoes" role="tab" aria-controls="shoes" aria-selected="false"><img src = "images/shoes.png" style="width: 30px;"></a>
+							<a class="nav-link flex-sm-fill text-sm-center nav-link" id="hats-tab" onclick="clicked_category(0);" data-toggle="pill" href="#hats" role="tab" aria-controls="hats" aria-selected="false"><img src = "images/hats.png" style="width: 30px;"></a>
+							<a class="nav-link flex-sm-fill text-sm-center nav-link" id="glasses-tab" onclick="clicked_category(1);" data-toggle="pill" href="#glasses" role="tab" aria-controls="glasses" aria-selected="false"><img src = "images/glasses.png" style="width: 30px;"></a>
+						</nav>
+
+						<hr>
+						<h6 class="tab-content" id="pills-tabContent">
+
+							<div class="tab-pane fade show active" id="jacket" role="tabpanel" aria-labelledby="jacket-tab">
+								<center>
+
+									<a id = "item_holder11"></a>
+
+									<button  type="button" class="btn btn-danger btn-sm" onclick="pluse_item(0);"><i class="fa fa-chevron-left"></i></button>
+
+									<a id = "item_button11"></a>
+
+									<button type="button" class="btn btn-danger btn-sm" onclick="pluse_item(1);"><i class="fa fa-chevron-right"></i></button>
+
+									<br><br>
+
+									<button style="border-radius: 200px; width: 265px;" type="button" class="btn btn-primary btn-sm" onclick="click_button(1);">Buy <i class="fa fa-shopping-cart"></i></button>
+
+									<br><br><br><hr>
+ 
+									<button style="border-radius: 200px;" type="button" class="btn btn-danger btn-sm btn-block" onclick="click_button(4);">Reset <i class="fa fa-check"></i></button>
+
+								</center> 
+							</div>
+
+
+							<div class="tab-pane fade" id="jeans" role="tabpanel" aria-labelledby="jeans-tab">
+								<center>
+ 
+									<a id = "item_holder4"></a>
+ 
+									<button  type="button" class="btn btn-danger btn-sm" onclick="pluse_item(0);"><i class="fa fa-chevron-left"></i></button>
+
+									<a id = "item_button4"></a>
+
+									<button type="button" class="btn btn-danger btn-sm" onclick="pluse_item(1);"><i class="fa fa-chevron-right"></i></button>
+
+									<br><br>
+
+									<button style="border-radius: 200px; width: 265px;" type="button" class="btn btn-primary btn-sm" onclick="click_button(1);">Buy <i class="fa fa-shopping-cart"></i></button>
+
+									<br><br><br><hr>
+  
+									<button style="border-radius: 200px;" type="button" class="btn btn-danger btn-sm btn-block" onclick="click_button(4);">Reset <i class="fa fa-check"></i></button>
+								</center> 	
+							</div>
+
+
+							<div class="tab-pane fade" id="shoes" role="tabpanel" aria-labelledby="shoes-tab">
+								<center>
+ 
+									<a id = "item_holder6"></a>
+ 
+									<button  type="button" class="btn btn-danger btn-sm" onclick="pluse_item(0);"><i class="fa fa-chevron-left"></i></button>
+
+									<a id = "item_button6"></a>
+
+									<button type="button" class="btn btn-danger btn-sm" onclick="pluse_item(1);"><i class="fa fa-chevron-right"></i></button>
+
+									<br><br>
+
+									<button style="border-radius: 200px; width: 265px;" type="button" class="btn btn-primary btn-sm" onclick="click_button(1);">Buy <i class="fa fa-shopping-cart"></i></button>
+ 
+									<br><br><br><hr>
+ 
+									<button style="border-radius: 200px;" type="button" class="btn btn-danger btn-sm btn-block" onclick="click_button(4);">Reset <i class="fa fa-check"></i></button>
+								</center> 	
+							</div>
+
+							<div class="tab-pane fade" id="hats" role="tabpanel" aria-labelledby="hats-tab">
+								<center>
+ 
+									<a id = "item_holder0"></a>
+ 
+									<button  type="button" class="btn btn-danger btn-sm" onclick="pluse_item(0);"><i class="fa fa-chevron-left"></i></button>
+
+									<a id = "item_button0"></a>
+
+									<button type="button" class="btn btn-danger btn-sm" onclick="pluse_item(1);"><i class="fa fa-chevron-right"></i></button>
+
+									<br><br>
+
+									<button style="border-radius: 200px; width: 265px;" type="button" class="btn btn-primary btn-sm" onclick="click_button(1);">Buy <i class="fa fa-shopping-cart"></i></button>
+ 
+									<br><br><br><hr>
+ 
+									<button style="border-radius: 200px;" type="button" class="btn btn-danger btn-sm btn-block" onclick="click_button(4);">Reset <i class="fa fa-check"></i></button>
+								</center> 	
+							</div>
+
+
+							<div class="tab-pane fade" id="glasses" role="tabpanel" aria-labelledby="glasses-tab">
+								<center>
+ 
+									<a id = "item_holder1"></a>
+ 
+									<button  type="button" class="btn btn-danger btn-sm" onclick="pluse_item(0);"><i class="fa fa-chevron-left"></i></button>
+
+									<a id = "item_button1"></a>
+
+									<button type="button" class="btn btn-danger btn-sm" onclick="pluse_item(1);"><i class="fa fa-chevron-right"></i></button>
+
+									<br><br>
+
+									<button style="border-radius: 200px; width: 265px;" type="button" class="btn btn-primary btn-sm" onclick="click_button(1);">Buy <i class="fa fa-shopping-cart"></i></button>
+ 
+									<br><br><br><hr>
+ 
+									<button style="border-radius: 200px;" type="button" class="btn btn-danger btn-sm btn-block" onclick="click_button(4);">Reset <i class="fa fa-check"></i></button>
+								</center> 	
+							</div>   
+						</h6>  
+					</div>  
+				</div> 
+			</div>
+		</div>
+	</div>
+
+	<script> 
+
+	    //Index   - clothes ID -  item color - Clothes price - Clothes name 
+        const jacket = 
+		[   
+			[11, 4,  5, 1000, "White jacket",  8,   2],
+			[11, 7,  5, 2000, "Red sweater",  9,   2], 
+			[11, 20, 1, 3000, "Blue jacket",  10,  2],
+			[11, 23, 2, 4000, "Purple jacket",  14,  0],
+			[11, 24, 3, 5000, "Red jacket",  24,  2],
+			[11, 35, 2, 6000, "Blue jacket",  35,  0],
+			[11, 37, 2, 1000, "Black & brown jacket",  51,  0],
+			[11, 46, 1, 1000, "Blue coat",  53,  0],
+			[11, 59, 2, 1000, "Black coat",  58,  0],
+			[11, 62, 0, 1000, "Black jacket", 64,  0],
+			[11, 70, 0, 1000, "Brown coat", 70,  0],
+			[11, 72, 0, 1000, "Yellow coat", 130, 0] 
+		]; 
+
+		const jeans = 
+		[  
+			[4,  1,  0,  7000, "Black jeans", 3,  0],
+			[4,  79, 0,  8000, "Urban black jeans", 25, 0],
+			[4,  3,  0,  9000, "White jeans", 26, 0],
+			[4,  4,  0,  1100, "Black jeans", 28, 0], 
+			[4,  5,  0,  1200, "White & black jeans", 30, 0], 
+			[4,  9,  0,  1000, "Green jeans", 31, 0], 
+			[4,  26, 0,  1000, "Urban black jeans", 37, 0],
+			[4,  52, 0,  1000, "Elegant purple jeans", 50, 0], 
+			[4,  66, 0,  1000, "Blue & white jeans", 51, 0],  
+			[4,  82, 0,  1000, "Urban black jeans", 52, 0],   
+			[4,  2,  0,  1000, "White & black shorts", 54, 0],
+			[4,  15, 0,  1000, "Yellow shorts", 60, 0], 
+			[4,  21, 0,  1000, "Heart shorts", 64, 0],
+			[4,  18, 0,  1000, "Yellow shorts", 75, 2]   
+		];
+
+		const shoes = 
+		[   
+			[6, 1,  0, 1000, "Black shoes", 6,  0], 
+			[6, 42, 0, 2000, "Grey shoes", 7,  0],
+			[6, 30, 0, 3000, "Elegant grey shoes", 8,  6],
+			[6, 31, 0, 4000, "White & yellow shoes", 10, 0], 
+			[6, 28, 0, 5000, "White shoes", 13, 0], 
+			[6, 19, 0, 6000, "White & black shoes", 14, 0], 
+			[6, 49, 0, 7000, "Yellow shoes", 15, 0],
+			[6, 77, 0, 1000, "Purple shoes", 19, 0], 
+			[6, 95, 0, 1000, "Yellow shoes", 20, 0],  
+			[6, 23, 0, 1000, "Brown shoes", 23, 0], 
+			[6, 5,  0, 1000, "White beach slippers", 27, 0], 
+			[6, 16, 0, 1000, "Black beach slippers", 29, 0]   
+		];
+
+		const hats = 
+		[ 
+			[0, 25, 1, 1000, "Cream Undertaker Hat", 4,  0], 
+			[0, 103, 0, 2000, "Blue Cap", 1,  0],
+			[0, 109, 0, 3000, "Pink Cap", 9,  6],
+			[0, 29, 0, 4000, "Grey Bowler Hat", 10, 0], 
+			[0, 140, 0, 5000, "Red Cap", 12, 0], 
+			[0, 60, 0, 6000, "Green Cap", 13, 0], 
+			[0, 61, 0, 7000, "Dark Red Mod Pork Pie", 20, 0],
+			[0, 63, 0, 1000, "Green Cap", 21, 0], 
+			[0, 65, 0, 1000, "Illuminati Black Cap", 22, 0],  
+			[0, 151, 0, 1000, "White Cap", 44, 0], 
+			[0, 76, 0, 1000, "Blue Cap", 65, 0], 
+			[0, 96, 0, 1000, "Black Cap", 76, 0]   
+		]
+
+		const glasses = 
+		[ 
+			[1, 1, 1, 1000, "Glasses", 0,  0], 
+			[1, 2, 0, 2000, "Glasses 1", 1,  0],
+			[1, 3, 0, 3000, "Pink Cap", 2,  6],
+			[1, 4, 0, 4000, "Grey Bowler Hat", 3, 0], 
+			[1, 5, 0, 5000, "Red Cap", 4, 0], 
+			[1, 7, 0, 6000, "Green Cap", 6, 0], 
+			[1, 8, 0, 7000, "Dark Red Mod Pork Pie", 7, 0],
+			[1, 9, 0, 1000, "Green Cap", 20, 0], 
+			[1, 10, 0, 1000, "Illuminati Black Cap", 21, 0],  
+			[1, 12, 0, 1000, "White Cap", 24, 0], 
+			[1, 17, 0, 1000, "Blue Cap", 17, 0], 
+			[1, 18, 0, 1000, "Black Cap", 9, 0]   
+		]
+ 
+		var player_gender = 0;
+
+
+		item_index = [];
+		item_drawable = [];
+		item_color = [];
+
+		item_name = [];
+		item_money = [];
+ 
+		var category_id = 11;
+		var total_jackets = -1;
+		var total_jeans = -1;
+		var total_shoes = -1;
+		var total_hats = -1;
+		var total_glasses = -1;
+		 
+		var index = -1;
+		var drawable = -1;
+ 
+		function pluse_item(option)
+		{ 
+			//option 0 - minus   ------------   //option  1 - plus
+  
+			switch(category_id)
+			{
+				case 0: 
+				{ 
+					if(option == 0 && total_hats > 0) total_hats --;
+		            if(option == 1 && total_hats < hats.length - 1) total_hats ++; 
+			  
+					item_index[category_id] = hats[total_hats][0];
+					item_drawable[category_id] = hats[total_hats][(player_gender == 0) ? (1) : (5)];
+					item_color[category_id] = hats[total_hats][(player_gender == 0) ? (2) : (6)];
+ 
+					item_name[category_id] = hats[total_hats][4]; 
+					item_money[category_id] = hats[total_hats][3]; 
+					break;
+				}
+
+				case 1: 
+				{ 
+					if(option == 0 && total_glasses > 0) total_glasses --;
+		            if(option == 1 && total_glasses < glasses.length - 1) total_glasses ++; 
+
+					item_index[category_id] = glasses[total_glasses][0];
+					item_drawable[category_id] = glasses[total_glasses][(player_gender == 0) ? (1) : (5)];
+					item_color[category_id] = glasses[total_glasses][(player_gender == 0) ? (2) : (6)];
+   
+					item_name[category_id] = glasses[total_glasses][4];
+					item_money[category_id] = glasses[total_glasses][3];
+					break;
+				}
+
+				case 11: 
+				{ 
+					if(option == 0 && total_jackets > 0) total_jackets --;
+		            if(option == 1 && total_jackets < jacket.length - 1) total_jackets ++;
+   
+					item_index[category_id] = jacket[total_jackets][0];
+					item_drawable[category_id] = jacket[total_jackets][(player_gender == 0) ? (1) : (5)];
+					item_color[category_id] = jacket[total_jackets][(player_gender == 0) ? (2) : (6)];
+ 
+					item_name[category_id] = jacket[total_jackets][4];
+					item_money[category_id] = jacket[total_jackets][3];
+					break;
+				}
+
+				case 4: 
+				{
+					if(option == 0 && total_jeans > 0) total_jeans --;
+		            if(option == 1 && total_jeans < jeans.length - 1) total_jeans ++;
+ 
+					item_index[category_id] = jeans[total_jeans][0];
+					item_drawable[category_id] = jeans[total_jeans][(player_gender == 0) ? (1) : (5)];
+					item_color[category_id] = jeans[total_jeans][(player_gender == 0) ? (2) : (6)];
+
+					item_name[category_id] = jeans[total_jeans][4];
+					item_money[category_id] = jeans[total_jeans][3];
+					break;
+				}
+
+				case 6: 
+				{
+					if(option == 0 && total_shoes > 0) total_shoes --;
+		            if(option == 1 && total_shoes < shoes.length - 1) total_shoes ++;
+
+					item_index[category_id] = shoes[total_shoes][0];
+					item_drawable[category_id] = shoes[total_shoes][(player_gender == 0) ? (1) : (5)];
+					item_color[category_id] = shoes[total_shoes][(player_gender == 0) ? (2) : (6)];
+ 
+					item_name[category_id] = shoes[total_shoes][4];
+					item_money[category_id] = shoes[total_shoes][3];
+					break;
+				}
+			}
+  
+			document.querySelector(`#item_holder${category_id}`).innerHTML = `Price: <span style="color: green;">${item_money[category_id]}</span>$<p>Item: ${item_name[category_id]}</p><br>`; 
+ 
+			document.querySelector(`#item_button${category_id}`).innerHTML = `<button style="width: 200px;" type="button" class="btn btn-dark btn-sm">${item_name[category_id]}</button>`;  
+
+			//APPLY CLOTHES TO CHARACTER
+			mp.trigger("apply_item_character", item_index[category_id], item_drawable[category_id], item_color[category_id]); 
+		}
+
+		function click_button(option)
+		{  
+			//BUY ITEM - CLOSE MENU
+			if(option == 2 || option == 3 || option == 0)
+			{ 
+				$('#confirm_order').modal('hide'); 
+
+				console.log(item_name[category_id]) 
+			} 
+
+			//SHOW MODAL FOR CONFIRM
+			if(item_name[category_id] && option == 1) 
+			{
+				$('#confirm_order').modal() 
+				return;
+			}
+			    
+            //RESET ITEMS
+			if(option == 4) 
+			{ 
+				category_id = 11;
+				total_jackets = -1;
+				total_jeans = -1;
+				total_shoes = -1;
+				total_hats = -1;
+				total_glasses = -1;
+				
+				item_index = [];
+				item_drawable = [];
+				item_color = [];
+
+				item_name = [];
+				item_money = [];
+
+				//Jacket
+				document.querySelector(`#item_holder${11}`).innerHTML = `-<br><br>`; 
+				
+				//Jeans
+				document.querySelector(`#item_holder${4}`).innerHTML = `-<br><br>`; 
+				
+				//Shoes
+				document.querySelector(`#item_holder${6}`).innerHTML = `-<br><br>`; 
+
+				//Hats
+				document.querySelector(`#item_holder${0}`).innerHTML = `-<br><br>`; 
+
+				//Glasses
+				document.querySelector(`#item_holder${1}`).innerHTML = `-<br><br>`; 
+	
+				//Buttons
+				document.querySelector(`#item_button${4}`).innerHTML = `<button style="width: 200px;" type="button" class="btn btn-dark btn-sm">-</button>`;
+				document.querySelector(`#item_button${6}`).innerHTML = `<button style="width: 200px;" type="button" class="btn btn-dark btn-sm">-</button>`; 
+				document.querySelector(`#item_button${11}`).innerHTML = `<button style="width: 200px;" type="button" class="btn btn-dark btn-sm">-</button>`;  
+				document.querySelector(`#item_button${0}`).innerHTML = `<button style="width: 200px;" type="button" class="btn btn-dark btn-sm">-</button>`;
+				document.querySelector(`#item_button${1}`).innerHTML = `<button style="width: 200px;" type="button" class="btn btn-dark btn-sm">-</button>`;  
+			}
+ 
+			mp.trigger("clicked_button", option, item_name[category_id], item_money[category_id], item_index[category_id], item_drawable[category_id], item_color[category_id]); 
+		}
+ 
+		window.addEventListener('DOMContentLoaded', () => { 
+
+			//Jacket
+			document.querySelector(`#item_holder${11}`).innerHTML = `-<br><br>`; 
+			
+			//Jeans
+			document.querySelector(`#item_holder${4}`).innerHTML = `-<br><br>`; 
+			
+			//Shoes
+			document.querySelector(`#item_holder${6}`).innerHTML = `-<br><br>`; 
+
+			//Hats
+			document.querySelector(`#item_holder${0}`).innerHTML = `-<br><br>`; 
+
+			//Glasses
+			document.querySelector(`#item_holder${1}`).innerHTML = `-<br><br>`; 
+ 
+			//Buttons
+			document.querySelector(`#item_button${4}`).innerHTML = `<button style="width: 200px;" type="button" class="btn btn-dark btn-sm">-</button>`;
+			document.querySelector(`#item_button${6}`).innerHTML = `<button style="width: 200px;" type="button" class="btn btn-dark btn-sm">-</button>`; 
+			document.querySelector(`#item_button${11}`).innerHTML = `<button style="width: 200px;" type="button" class="btn btn-dark btn-sm">-</button>`;
+			document.querySelector(`#item_button${0}`).innerHTML = `<button style="width: 200px;" type="button" class="btn btn-dark btn-sm">-</button>`;
+			document.querySelector(`#item_button${1}`).innerHTML = `<button style="width: 200px;" type="button" class="btn btn-dark btn-sm">-</button>`;
+		});
+
+		function update_gender(gender)
+		{
+			player_gender = gender;
+		}
+
+		function clicked_category(id)
+		{ 
+			category_id = id;
+		} 
+	</script>
+
+ 
+	<!-- Bootstrap 4 Scrips CDN -->     
+	<script src = "https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> 
+	<script src = "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script> 
+	<!-- End Bootstrap 4 Scripts CDN-->
+</body>
+
+</html> 
