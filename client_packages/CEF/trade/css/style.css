@@ -1,0 +1,96 @@
+html body {
+    background-color: rgba(0, 0, 0, 0.0);
+    user-select: none; 
+}
+
+body .container {
+    margin-left: 1%;
+    margin-top: 5%;
+    width: 1000px; 
+}  
+
+.container_global {
+    display: none;
+}
+
+.container2 {
+    margin-left: 30%;
+    margin-top: -20.4%;
+    width: 1000px; 
+}  
+
+.trade_finish { 
+    margin-top: 15%;
+    display: none;
+}
+
+.container_inventory {
+    margin-left: 1.8%;
+    margin-top: 0.5%;
+    width: 969px; 
+}
+
+.container_chat {
+    margin-left: 30%;
+    margin-top: -20.4%;
+    width: 1000px; 
+}
+
+.offer_buttons {
+    margin-left: 37%;
+    margin-top: 15%; 
+}
+
+.container3 {
+    margin-left: -3%;
+    margin-top: -5%;
+    width: 1135px; 
+}  
+ 
+::-webkit-scrollbar {
+    width: 7px; 
+    display: block;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1a75ff;
+    border-radius: 200px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(134, 134, 134);
+} 
+
+.scroll {
+    overflow-y: auto;
+    width: 530px;
+    height: 360px; 
+}
+
+.scroll_trade_finish {
+    overflow-y: auto; 
+    height: 360px; 
+}
+
+
+.box_item {
+    background-color: #2d3239;
+    width: 80px;
+    height: 80px; 
+    margin: 2px;
+}
+ 
+.badge_trade {
+    
+    margin-left: 1px;
+}
+
+.popover  {
+    background: grey;
+    color: white;
+}
+
+.popover.bottom .arrow:after {
+    border-bottom-color:grey;
+    color: white;
+}

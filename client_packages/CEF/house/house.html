@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html>
+
+<head> 
+	<!-- Custom Style --> 
+	<style type= "text/css">
+		html body {
+		    background-color: rgba(0, 0, 0, 0.0);
+		}
+		body .container {
+			margin-top:20%;
+			opacity: 0.8;
+		} 
+	</style>
+
+	<!-- Fontawesome CDN -->
+	<link href = "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel = "stylesheet" integrity = "sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin = "anonymous">
+	
+	<!-- Bootstrap 4 CDN -->
+	<link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity = "sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin = "anonymous"> 
+</head>
+
+<body>
+
+	<!-- Aici e modalul (ala de apare sus) -->
+	<div class = "modal" id = "edit_desc" tabindex = "-1" role = "dialog">
+	    <div class = "modal-dialog modal-dialog-centered" role = "document">
+	        <div class = "modal-content text-light" style = "background-color: #212429;">
+	            <div class = "modal-header">
+					<h6 class = "modal-title">House description:</h6>
+					<button type = "button" class = "close" data-dismiss = "modal" aria-label = "Close">
+					    <span aria-hidden = "true">&times;</span>
+					</button>
+	            </div>
+				<div class = "modal-body">
+					<form> 
+						<input type = "text" class = "form-control" id = "houseDescriptionEnter" placeholder = "Enter your description..."> 
+						
+					</form>
+				</div>
+				<div class = "modal-footer"> 
+					<button type = "button" class = "btn btn-outline-success btn-sm" data-dismiss = "modal" onclick = "closePlayerHMenu(3);">Save <i class = "fa fa-check" aria-hidden="true"></i></button>
+				</div>
+			</div>
+	    </div>
+	</div>
+
+	<div class = "modal" id = "edit_rent" tabindex = "-1" role = "dialog">
+		<div class = "modal-dialog modal-dialog-centered" role = "document">
+	        <div class = "modal-content text-light" style = "background-color: #212429;">
+			    <div class = "modal-header">
+				    <h6 class = "modal-title">Rent price:</h6>
+				    <button type = "button" class = "close" data-dismiss = "modal" aria-label = "Close">
+				        <span aria-hidden = "true">&times;</span>
+				    </button>
+			    </div>
+	            <div class = "modal-body">
+				    <form>
+					    <input type="number" id = "houseRentPriceEnter" placeholder = "Enter your rent price..." class = "form-control">
+				    </form>
+	            </div>
+				<div class = "modal-footer"> 
+					<button type = "button" class = "btn btn-outline-success btn-sm" data-dismiss = "modal" onclick = "closePlayerHMenu(4);">Save <i class = "fa fa-check" aria-hidden = "true"></i></button>
+				</div>
+	        </div>
+	    </div>
+	</div>
+
+	<div class = "container ">
+		<div class = "row mx-auto align-item-center justify-content-center">
+			<div class = "col-md-10">
+
+				<div class = "card text-light" style = "background-color: #000000;">
+ 
+					<div class = "card-header">
+						<i class = "fa fa-car"></i> House Menu <div class = "float-right">
+							<button class = "btn btn-dark" style = "background-color: #212429;" onclick = "closePlayerHMenu(0);"><i class="fa fa-times-circle"></i></button>
+						</div>
+					</div>
+ 
+					<div class="card-body">
+
+						<ul class="nav nav-pills nav justify-content-center" id="tab" role="tablist">
+						    <li class="nav-item" role="presentation">
+						        <a class="nav-link active" id="hinfo-tab" data-toggle="tab" href="#hinfo" role="tab" aria-controls="hinfo" aria-selected="true">House Info</a>
+						    </li>
+						   
+							<li class="nav-item" role="presentation">
+						        <a class="nav-link" id="ten-tab" data-toggle="tab" href="#ten" role="tab" aria-controls="ten" aria-selected="false">Tenants</a>
+							</li>
+							
+							<li class="nav-item" role="presentation">
+						        <a class="nav-link" id="request-tab" data-toggle="tab" href="#request" role="tab" aria-controls="request" aria-selected="false">Enter request</a>
+							</li>
+							 
+							<li class="nav-item" role="presentation">
+						        <a class="nav-link" id="offers-tab" data-toggle="tab" href="#offers" role="tab" aria-controls="offers" aria-selected="false">Offers</a>
+						    </li> 
+						</ul>
+						 
+ 
+						<div class = "tab-content" id = "tabContent">
+							<hr>
+							<!-- General -->
+						    <div class = "tab-pane fade show active" id = "hinfo" role = "tabpanel" aria-labelledby = "hinfo-tab">
+						  	<br>
+								<div class = "row">
+									<div class = "col-lg-12">  
+										<div class = "row">
+
+											<div class = "col-lg-5">
+
+
+
+												<div class="card" style="background-color: #212429;">
+
+													<div class="card-header"><h6>House info</h6></div>
+				
+													<div class="card-body">
+				
+														<a class="text-muted">
+															Rent: <span class="float-right" style = "color:#3385ff;" id = "houseRent-placeholder"> 0$</span>
+
+															<br>
+															Balance: <span class="float-right" style = "color:#3385ff;" id = "houseBalance-placeholder">5.000.000$</span>
+
+															<br>
+															Tenants: <span class="float-right" style = "color:#3385ff;" id = "totalRenters-placeholder">20</span>
+														</a> 
+													</div> 
+												</div>  
+											</div>
+ 
+											<div class="col-lg-7">  
+												<center>
+
+													<button class = "btn btn-outline-primary btn-sm" type = "button" onclick = "closePlayerHMenu(2);"><i class="fa fa-map"></i> Set checkpoint to it</button> &#160;&#160;&#160;&#160;&#160;&#160;
+													<button class = "btn btn-outline-info btn-sm" type = "button" data-toggle = "modal" data-target = "#edit_desc"><i class = "fa fa-pencil"></i> Edit Description</button> &#160;&#160;&#160;&#160;&#160;&#160; 
+													<button class = "btn btn-outline-warning btn-sm" type = "button" data-toggle = "modal" data-target =  "#edit_rent"><i class="fa fa-pencil"></i> Edit Rent Price</button> 
+												
+													<div class="col-lg-11">  
+														<br> 
+														<button class = "btn btn-outline-success btn-block btn-sm" onclick = "closePlayerHMenu(1);" id = "sellHouse-placeholder"><i class = "fa fa-university"></i> Sell house</button>
+														
+														<br>
+														<a class = "text" id = "hstatus-placeholder"></a> 
+													</div>  
+												</center>  
+											</div>   
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- View your house tenant -->
+							<div class="tab-pane fade" id="ten" role="tabpanel" aria-labelledby="ten-tab">
+								<br>
+								<div class="table-wrapper-scroll-y table-scrollbar">
+									<table class="table table-hover table-dark">
+										<thead style="background-color: #212429;">
+											<tr>
+												<th scope="text-center"><i class="fa fa-list-ol"></i></th>
+												<th scope="text-center">Username <i class="fa fa-user"></i></th>
+												<th scope="text-center">Level <i class="fa fa-bar-chart"></i></th>
+											</tr>
+										</thead>
+
+										<tbody id = "checkTotalRenters-placeholder"></tbody>  
+									</table>
+								</div> 
+							</div>
+
+                            <!-- Player request enter on your house -->
+							<div class="tab-pane fade" id="request" role="tabpanel" aria-labelledby="request-tab">
+								<br>
+								<div class="table-wrapper-scroll-y table-scrollbar">
+									<table class="table table-hover table-dark">
+										<thead style="background-color: #212429;">
+											<tr>
+												<th scope="text-center"><center><i class="fa fa-list-ol"></i></center></th>
+												<th scope="text-center"><center>Name <i class="fa fa-user"></i></center></th>
+												<th scope="text-center"><center>Time <i class="fa fa-clock-o"></i></center></th> 
+												<th scope="text-center"><center>Action <i class="fa fa-gavel"></i></center></th>
+											</tr>
+										</thead>
+
+										<tbody id = "requestString-placeholder"></tbody>  
+									</table>
+								</div> 
+							</div> 
+
+
+							<!-- Player send offer for this house -->
+							<div class="tab-pane fade" id="offers" role="tabpanel" aria-labelledby="offers-tab">
+								<br>
+								<div class="table-wrapper-scroll-y table-scrollbar">
+									<table class="table table-hover table-dark">
+										<thead style="background-color: #212429;">
+											<tr>
+												<th scope="text-center"><center><i class="fa fa-list-ol"></i></center></th>
+												<th scope="text-center"><center>Name <i class="fa fa-user"></i></center></th>
+												<th scope="text-center"><center>Time <i class="fa fa-clock-o"></i></center></th> 
+												<th scope="text-center"><center>Amount <i class="fa fa-money"></i></center></th> 
+												<th scope="text-center"><center>Action <i class="fa fa-gavel"></i></center></th>
+											</tr>
+										</thead>
+
+										<tbody id = "offers-placeholder"></tbody>  
+									</table>
+								</div> 
+							</div>  
+						</div>
+					</div> 
+				</div> 
+			</div>
+		</div>
+	</div>
+
+	<!-- Bootstrap 4 Scrips CDN -->
+	<script>
+
+		const inputs = document.querySelectorAll('input');
+		inputs.forEach(input => {
+		      
+			input.addEventListener("focus", () => {
+				mp.trigger('ToggleChat', 1, true, false);
+			});
+			
+			input.addEventListener("focusout", (e) => {
+				mp.trigger('ToggleChat', 1, false, false);
+			}); 
+		}); 
+	</script>
+
+
+	<script src="house.js"></script> 
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+	<!-- End Bootstrap 4 Scripts CDN-->
+</body>
+
+</html>

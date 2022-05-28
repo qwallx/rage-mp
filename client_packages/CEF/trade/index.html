@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	 
+	<!-- Fontawesome CDN -->
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	
+	<!-- Bootstrap 4 CDN -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> 
+
+	<link rel="stylesheet" href="css/style.css"> 
+  
+</head> 
+
+	<body>  
+		<div class="modal fade" id="remove_item" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content text-light" style = "background-color: #000000; opacity: 0.8;">
+				
+					<h6 class="modal-header">Remove item</h6>
+
+					<h6 class="modal-body text-center" id = "offer_remove_holder">
+
+ 
+
+					</h6> 
+				</div>
+			</div>
+		</div>
+
+
+		<div class="modal fade" id="clicked_item" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content text-light" style = "background-color: #000000; opacity: 0.8;">
+				
+					<h6 class="modal-header" id = "modal_holder"> </h6>
+
+					<h6 class="modal-body text-center" id = "clicked_item_holder"></h6> 
+				</div>
+			</div>
+		</div>
+ 
+		<div class = "trade_finish">
+			<div class="row mx-auto align-item-center justify-content-center">
+				<div class="col-md-5">
+					 
+					<div class = "card text-light" style = "background-color: #000000;  opacity: 0.8;">
+		
+						<h6 class="card-header text-center" >
+   
+							Your items
+
+							<span class="text" style="margin-left: 40%;" id = "offer_finish_name"></span> 
+						</h6>
+	  
+						<div class = "card-body">  
+							<h6 class = "row">   
+								<div class="col-md-6 scroll_trade_finish" style="line-height: 1.5;" id = "your_items"></div>
+	 
+								<div class = "col-md-6 scroll_trade_finish" style="line-height: 1.5;" id = "his_items"></div>  
+							</h6>  
+
+							<br>
+							
+							<button onclick = "destroy_trade_browser();" style="border-radius: 200px; background-color: #e60000;" class = "btn btn-block btn-sm text-light">Close <i class="fa fa-times" aria-hidden="true"></i></button>
+						</div>   
+					</div>  
+				</div>
+			</div>
+		</div> 
+ 
+		<div class="container_global"> 
+			<div class = "container">
+	
+				<div class = "row mx-auto align-item-left justify-content">
+					
+					<div class="col-md-7 ml-auto">
+
+						<div class = "container3">
+							<div class = "row mx-auto align-item-right justify-content">
+								<div class="col-md-12 ml-auto"> 
+									<div class = "card text-light" style = "background-color: #000000; opacity: 0.8;">
+					
+										<h6 class = "card-header" style="height: 30px; text-align: center; margin-top: -1.5%; line-height: 2;"> 
+				
+											Trade <img src="img/trade-ico.png" style="width: 15px;">
+
+											<div class = "timerTrade" style="display: none;">
+	
+												<span style="border-radius: 200px; width: 150px;" class="badge badge-warning" id = "trade_finish_in">Trade finish in 00:20 <i class="fa fa-clock-o"></i></span>
+												
+											</div>  
+										</h6>
+	
+										<div class = "card-body" id = "buttons_ready"></div>
+									</div>  
+								</div>
+							</div>
+						</div> 
+
+						<br>
+	
+						<div class = "card text-light" style = "background-color: #000000; opacity: 0.8;">
+		
+							<h6 class = "card-header" style="height: 30px; text-align: center;"> 
+
+								<div style="margin-top: -1.5%;" id = "your_offer"></div> 
+
+							</h6>
+	
+							<div class="card-body scroll">
+							
+								<div class = "row" id = "offer_placeholder"></div> 
+
+							</div>   
+						</div>  
+					</div>
+				</div>
+			</div> 
+	
+			<div class = "container2">
+				<div class = "row mx-auto align-item-right justify-content">
+					<div class="col-md-7 ml-auto">
+
+						<div class = "card text-light" style = "background-color: #000000; opacity: 0.8;">
+		
+							<h6 class = "card-header" style="height: 30px; text-align: center;"> 
+
+								<div style="margin-top: -1.5%;" id = "offerName"></div> 
+
+							</h6>
+		
+							<div class="card-body scroll">
+							
+								<div class = "row" id = "offer2_placeholder"> </div>  
+	
+							</div>   
+						</div>  
+					</div>
+				</div>
+			</div> 
+
+			<div class = "container_inventory">
+				<div class = "row mx-auto align-item-right justify-content">
+					<div class="col-md-7 ml-auto">
+
+						<div class = "card text-light" style = "background-color: #000000; opacity: 0.8;">
+		
+							<h6 class = "card-header" style="height: 30px; text-align: center;"> 
+
+								<div style="margin-top: -1.5%;">
+
+									Your inventory
+								</div> 
+							</h6>
+		
+							<div class="card-body scroll">
+								
+								<div class = "row" id = "player_items"></div>   
+							</div>   
+						</div>  
+					</div>
+				</div>
+			</div> 
+
+			<div class = "container_chat">
+				<div class = "row mx-auto align-item-right justify-content">
+					<div class="col-md-7 ml-auto">
+
+						<div class = "card text-light" style = "background-color: #000000; opacity: 0.8;">
+		
+							<h6 class = "card-header" style="height: 30px; text-align: center;"> 
+
+								<div style="margin-top: -1.5%;">
+
+									Chat
+								</div> 
+							</h6>
+		
+							<div class="card-body">
+
+								<h6 style = "overflow-y: auto; width: 530px; height: 250px; line-height: 1.5;" id = "total_messages"></h6>
+
+								<br>
+	
+								<input style = "width: 468px; float: left;" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Type"> 
+								<button onclick = "clicked_button();" style="float: right;" type="submit" class="btn btn-primary"><i class="fa fa-paper-plane"></i></button>
+							</div>   
+						</div>  
+					</div>
+				</div> 
+			</div> 
+		</div>
+
+		<script>
+
+			var text_holder = '';
+
+
+			function remove_offer_item(x, type, index, quantity)
+			{
+				/*$('#remove_item').modal() 
+
+				document.getElementById('offer_remove_holder').innerHTML = `
+				    Are you sure you want remove this item from trade offer?
+ 
+					<br><br><br>
+
+					<button onclick="delete_item_fin(${x}, ${type}, ${index}, ${quantity});" style="border-radius: 200px; width: 130px; margin-right: 10px;" type="button" class="btn btn-success btn-sm">Remove <i class="fa fa-check"></i></button>
+					<button data-dismiss="modal" style="border-radius: 200px; width: 130px; margin-left: 10px;" type="button" class="btn btn-danger btn-sm">Close <i class="fa fa-times"></i></button> 
+				`*/
+			}
+
+			function delete_item_fin(x, type, index, quantity)
+			{ 
+				$('#remove_item').modal('hide');  
+ 
+                mp.trigger("delete_item_offer", x, type, index, quantity); 
+			}
+ 
+			function add_buttons(status, name)
+			{ 
+				document.getElementById('buttons_ready').innerHTML = `
+
+				    <h6> 
+						• You are trading with ${name}. <br>
+						• Click on your inventory items to add them to offer. 
+					</h6>
+ 
+					<div class="asd" style="text-align: right; margin-top: -5%;">
+					
+						<!-- CLEAR OFFER --> 
+						<button onclick="click_ready_close(2);" style="border-radius: 200px; width: 130px; background-color: #6600cc;" type="button" class="btn btn-sm text-light">Clear <i class="fa fa-trash"></i></button>	
+
+						<!-- BUTON READY/ABANDON--> 
+						${(status == false) ? (`<button onclick="click_ready_close(${1});" style="border-radius: 200px; width: 125px;" type="button" class="btn btn-success btn-sm">Ready <i class="fa fa-check"></i></button>`) : (`<button onclick="click_ready_close(${1});" style="border-radius: 200px; width: 125px; background-color: #e60000;" type="button" class="btn btn-sm text-light">Abandon <i class="fa fa-times"></i></button>`)} 
+					
+						<br><br>
+
+						<!-- ADD MONEY --> 
+						<button onclick="clicked_item_inv2(${-1}, ${-1}, ${-1}, ${-1});" style="border-radius: 200px; width: 130px; background-color: #ff6600;" type="button" class="btn btn-sm text-light">Add money <i class="fa fa-plus"></i></button>	
+
+						<!-- BUTON CLOSE--> 
+						<button onclick="click_ready_close(0);" style="border-radius: 200px; width: 130px;" type="button" class="btn btn-primary btn-sm">Close <i class="fa fa-times"></i></button>	
+						
+					</div>  
+				`
+			}
+   
+			//Function for event player click item from inventory  
+			function clicked_item_inv2(x, type, invColor, index, name, gender, status)
+			{ 
+				$('#clicked_item').modal() 
+ 
+			    document.getElementById('modal_holder').innerHTML = 
+				`
+				    <img src="img/items/${(type >= 500) ? (type) : (index)}.png" style = "width: 20px;">  
+
+					<div class = "text" style = "margin-right: 76%;">${name}</div> 
+				`;
+
+
+				var text_used = '';
+
+				if(type < 500 && type != -1)
+				{ 
+					text_used = 
+					`
+					   <br>
+
+					   Status: ${(status == true) ? ('<span class="badge badge-success">in use</span>') : ('<span class="badge badge-danger">not used</span>')}
+
+					   <br>
+
+					   Gender: ${(gender == 0) ? ('<span class="badge badge-primary"><i class="fa fa-male"></i> M</span>') : ('<span style = "background-color: #7300e6;" class="badge badge-primary"><i class="fa fa-female"></i> F</span>')}
+					`
+				}
+				 
+				document.getElementById('clicked_item_holder').innerHTML = `
+
+				    Item: ${(x == -1) ? ('money') : (name)}
+  
+					${text_used}
+ 
+					<br><br>
+
+					• Please select ${(x == -1) ? ('money') : (name)} desired quantity:
+ 
+					<br><br>
+
+					<input style = "background-color: #212429;" type="number" class="form-control text-light" id="item_quantity" aria-describedby="validationTooltipUsernamePrepend" required> 
+
+					<hr style="background-color: white; border-radius: 5px;">
+
+					<button onclick="add_item_final(${x}, ${type}, ${invColor});" style="border-radius: 200px; width: 130px; margin-right: 10px;" type="button" class="btn btn-success btn-sm">Add <i class="fa fa-check"></i></button>
+					<button data-dismiss="modal" style="border-radius: 200px; width: 130px; margin-left: 10px;" type="button" class="btn btn-danger btn-sm">Close <i class="fa fa-times"></i></button> 
+					
+					${(status == true && type < 500) ? (`<br><br><button onclick = "dettach_item(${x}, ${type}, ${status});" style="border-radius: 200px; width: 280px;" type="button" class="btn btn-primary btn-sm">Detach item <i class="fa fa-reply-all"></i></button>`) : ("")} 
+				`;
+			}
+
+			function dettach_item(x, type, status)
+			{
+				mp.trigger("load_dettach_item", x, type, status); 
+			}
+ 
+			document.addEventListener('DOMContentLoaded', () => { 
+				 
+				//clicked_item_inv2(1, 450, 1, 'jacket', 'pula mea', 1, false);
+			});
+
+			function add_item_final(x, type, invColor)
+			{
+				const amount = document.getElementById("item_quantity");   
+
+				//Close modal
+				$('#clicked_item').modal('hide');  
+ 
+				mp.trigger("add_item_on_trade", x, type, invColor, amount.value); 
+			}
+ 
+			//Function click 'ready' and 'close'
+			function click_ready_close(option)
+			{
+				mp.trigger("click_ready_close", option);  
+			}
+  
+			//Function for click buttons
+			function clicked_button()
+			{
+				const text = document.getElementById("exampleInputEmail1"); 
+
+				if(text.value <= 0)
+				    return;
+  
+				mp.trigger("send_message_to_players", text.value);  
+
+				text.value = '';  	 
+			} 
+ 
+			//Function for send message in trade chat
+            function send_message(text_default)
+			{    
+				text_holder += `${text_default} <br>`;
+			  
+				document.getElementById('total_messages').innerHTML = text_holder;
+			} 
+
+			 
+  
+			const inputs = document.querySelectorAll('input');
+			inputs.forEach(input => {
+				
+				input.addEventListener("focus", () => {
+ 
+                    mp.trigger('ToggleChat', 1, true, false);
+				});
+				
+				input.addEventListener("focusout", (e) => {
+ 
+				    mp.trigger('ToggleChat', 1, false, false);
+					
+				});
+			}); 
+		</script>
+ 
+	
+		<!-- Bootstrap 4 Scrips CDN -->     
+		<script src = "index.js"></script>
+		<script src = "https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> 
+		<script src = "https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity = "sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin = "anonymous"></script>
+		<script src = "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script> 
+        <!-- End Bootstrap 4 Scripts CDN--> 
+
+		<script> 
+			$(document).ready(() => {
+
+				$('[data-toggle="popover"]').popover()
+			}); 
+		</script> 
+	</body> 
+</html> 
